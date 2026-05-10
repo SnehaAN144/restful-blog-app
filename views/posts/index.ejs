@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+
+        <div class="d-flex align-items-center justify-content-between mb-1 fade-up">
+
+            <div>
+                <h1 class="page-heading">All Posts</h1>
+                <p class="page-subheading">
+                    Ideas worth reading
+                </p>
+            </div>
+
+            <a href="/posts/create" class="btn btn-primary d-none d-sm-inline-flex">
+
+                + Write Post
+
+            </a>
+
+        </div>
+
+        <div class="section-divider"></div>
+            <% posts.forEach(function(post, i) { %>
+            <div class="card mb-3 fade-up" style="animation-delay: 0.2s">
+
+                <div class="card-body">
+
+                    <h3>
+
+                        <a href="/posts/<%= post.id %>">
+                            <%= post.title %>
+                        </a>
+
+                    </h3>
+
+                    <p>
+                        <%= post.content.substring(0, 120) %>…
+                    </p>
+
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+
+                        <small class="text-muted">
+                            <%= post.username %>
+                        </small>
+
+                        <a href="/posts/<%= post.id %>" class="read-more-chip">
+
+                            Read more ↗
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% }) %>
+
+                <%- include("../partials/footer") %>
+</body>
+
+</html>
