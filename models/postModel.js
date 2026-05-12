@@ -16,10 +16,12 @@ const createPost = (
         callback
     );
 };
-const getAllPosts = (callback) => {
+const getAllPosts = (callback)=>{
 
-    const sql = `
-      SELECT posts.*,
+   const sql = `
+
+      SELECT
+      posts.*,
       users.username
 
       FROM posts
@@ -28,14 +30,17 @@ const getAllPosts = (callback) => {
       ON posts.user_id = users.id
 
       ORDER BY posts.created_at DESC
+
    `;
 
-    db.query(sql, callback);
+   db.query(sql,callback);
 };
-const getPostById = (id, callback) => {
+const getPostById = (id,callback)=>{
 
-    const sql = `
-      SELECT posts.*,
+   const sql = `
+
+      SELECT
+      posts.*,
       users.username
 
       FROM posts
@@ -44,9 +49,10 @@ const getPostById = (id, callback) => {
       ON posts.user_id = users.id
 
       WHERE posts.id = ?
+
    `;
 
-    db.query(sql, [id], callback);
+   db.query(sql,[id],callback);
 };
 const updatePost = (
     id,
